@@ -1,3 +1,13 @@
+/*
+*
+*Setting variables
+*
+*/
+
+//receive values for columns and rows
+const columns = document.getElementById('inputWeight').value;
+const rows = document.getElementById('inputHeight').value;
+
 // Select color input
 // Select size input
 
@@ -5,6 +15,5 @@
 
 function makeGrid() {
 
-// Your code goes here!
 
 }
