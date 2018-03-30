@@ -4,17 +4,20 @@
 *
 */
 
-//receive values for columns and rows
-const columns = document.getElementById('inputWeight').value;
-const rows = document.getElementById('inputHeight').value;
+
+
+
 
 //set listeners from the form
 let form = document.querySelector('#sizePicker');
 form.addEventListener('submit', function(event) {
   event.preventDefault();
 
+  //receive values for columns and rows
+  const rows = document.getElementById('inputHeight').value;
+  const columns = document.getElementById('inputWeight').value;
   //testing message
-  console.log("Funciona!");
+  console.log(rows);
 });
 
 // Select color input
