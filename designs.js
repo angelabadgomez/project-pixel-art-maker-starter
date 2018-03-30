@@ -8,20 +8,31 @@
 
 
 
-//set listeners from the form
+// Set listeners from the form
 let form = document.querySelector('#sizePicker');
 form.addEventListener('submit', function(event) {
   event.preventDefault();
 
-  //receive values for columns and rows
+  // Receive values for columns and rows
   const rows = document.getElementById('inputHeight').value;
   const columns = document.getElementById('inputWeight').value;
-  //testing message
-  console.log(rows);
+
+  // show test
+  console.log(rows, columns);
 });
 
-// Select color input
-// Select size input
+// Set listeners for color
+let getColor = document.querySelector('#colorPicker');
+getColor.addEventListener('input', function(event) {
+  event.preventDefault();
+
+  // Get color value from user
+  let color = document.getElementById('colorPicker').value;
+
+  // Show test
+  console.log(color);
+});
+
 
 // When size is submitted by the user, call makeGrid()
 
