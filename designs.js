@@ -58,8 +58,8 @@ form.addEventListener('submit', function(event) {
 */
 
 // Set listeners for color
-let getColor = document.querySelector('#colorPicker');
-getColor.addEventListener('input', function(event) {
+let getColorPicker = document.querySelector('#colorPicker');
+getColorPicker.addEventListener('input', function(event) {
   event.preventDefault();
 
   // Get color value from user
@@ -73,23 +73,36 @@ getColor.addEventListener('input', function(event) {
   * Create listeners for the grid's cells
   *
   */
-  // Select all the cells from the grid
-  let getCell = document.querySelector('#pixelCanvas');
-  let cell = document.querySelectorAll('td');
-  //listen to the cells
-    getCell.addEventListener('click', function(event) {
 
-        getCell.style.cssText = 'background-color:' + color + ';';
+let getPixelCanvas = document.querySelector('#pixelCanvas');
+
+function paintCell(event){
+  let cellTarget = event.target.nodeName === 'TD';
+  if (cellTarget) {
+    console.log(event.target);
+  event.target.style.cssText = 'background-color:' + color + ';';
+  // event.target.setAttribute('style', 'background-color: ' + color + ';');
+
+  }
+}
+
+getPixelCanvas.addEventListener('click', paintCell);
+
+
+
 
   //
   //
-   });
-
+  // // Select all the cells from the grid
+  // let getCell = document.querySelector('#pixelCanvas');
+  // let cell = document.querySelectorAll('td');
+  // //listen to the cells
+  //   getCell.addEventListener('click', function(event) {
+  //
+  //       getCell.style.cssText = 'background-color:' + color + ';';
+  //
+  //
+  //  });
+  //
 
 });
-
- let titulo = document.getElementsByTagName('td');
-//  titulo.addEventListener('click', function() {
-//    titulo.style.cssText = 'color: red;';
-//
-// });
