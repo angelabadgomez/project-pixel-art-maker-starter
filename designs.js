@@ -1,17 +1,21 @@
 /*
 *
-* Setting initial variables
+* Create some initial variables
 *
 */
-  let rows = 0;
-  let columns = 0;
-  let color = '#000000';
+let rows = 0;
+let columns = 0;
+let color = document.getElementById('colorPicker').value;
+let colored = 'background-color: #000000;';
+let getPixelCanvas = document.querySelector('#pixelCanvas');
+let emptyTable = '<table id="pixelCanvas"></table>';
 
-  /*
-  *
-  * Create table from Choose Grid Size
-  *
-  */
+
+/*
+*
+* Create table from Choose Grid Size section
+*
+*/
 
 // Set listeners from the form
 let form = document.querySelector('#sizePicker');
@@ -24,9 +28,12 @@ form.addEventListener('submit', function(event) {
     rows = document.getElementById('inputHeight').value;
     columns = document.getElementById('inputWeight').value;
 
-
     // Select the table to insert rows and columns
     let theRows = document.getElementById('pixelCanvas');
+
+
+    // Reset any existing table
+    theRows.innerHTML = emptyTable;
 
     // Create the rows from #inputHeight
       for (let rowNumber = 0; rowNumber < rows; rowNumber++ ) {
@@ -47,62 +54,42 @@ form.addEventListener('submit', function(event) {
     }
 
   }
+
   makeGrid();
 });
 
 
 /*
 *
-* Get color from Pick A Color
+* Create a paint feature
 *
 */
 
-// Set listeners for color
-let getColorPicker = document.querySelector('#colorPicker');
-getColorPicker.addEventListener('input', function(event) {
-  event.preventDefault();
-
-  // Get color value from user
-  let color = document.getElementById('colorPicker').value;
-
-  // Show test
-  console.log(color);
-
-  /*
-  *
-  * Create listeners for the grid's cells
-  *
-  */
-
-let getPixelCanvas = document.querySelector('#pixelCanvas');
-
+// Function to paint the cells from the grid
 function paintCell(event){
-  let cellTarget = event.target.nodeName === 'TD';
-  if (cellTarget) {
-    console.log(event.target);
-  event.target.style.cssText = 'background-color:' + color + ';';
-  // event.target.setAttribute('style', 'background-color: ' + color + ';');
 
-  }
+  // Set a Let to save the event + target cell (nodeName TD)
+  let cellTarget = event.target.nodeName === 'TD';
+
+  //  Set style to the clicked cell
+  colored = event.target.style.cssText = 'background-color: ' + color + ';';
 }
 
+// Call the function
 getPixelCanvas.addEventListener('click', paintCell);
 
 
+/*
+*
+* Get color from Pick A Color section
+*
+*/
 
+  // Set listeners for color
+  let getColorPicker = document.querySelector('#colorPicker');
 
-  //
-  //
-  // // Select all the cells from the grid
-  // let getCell = document.querySelector('#pixelCanvas');
-  // let cell = document.querySelectorAll('td');
-  // //listen to the cells
-  //   getCell.addEventListener('click', function(event) {
-  //
-  //       getCell.style.cssText = 'background-color:' + color + ';';
-  //
-  //
-  //  });
-  //
+  getColorPicker.addEventListener('input', function(event) {
 
-});
+    // Get color value from user
+    color = document.getElementById('colorPicker').value;
+  });
